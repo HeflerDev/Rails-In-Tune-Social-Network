@@ -1,1 +1,33 @@
 @import "bootstrap";
+
+$color-primary: #707AFF ;
+$color-secondary: #AE5AE8;
+$color-accent: #FF2B9D;
+$color-text: whitesmoke;
+
+
+* {
+  border: solid red 1px;
+}
+
+nav {
+  height: 10vh;
+  min-height: 50px;
+  background-color: $color-primary;
+  color: $color-text;
+}
+
+@media only screen and (min-width: 992px) {
+         header {
+           height: 100vh;
+         }
+     }
+
+footer {
+  height: 5vh;
+  min-height: 50px;
+  width: 100%;
+  position:fixed;
+  background-color: $color-primary;
+  bottom: 0;
+}

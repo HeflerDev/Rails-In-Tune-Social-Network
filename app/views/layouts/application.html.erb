@@ -11,6 +11,41 @@
 
   <body>
 
-    <%= yield %>
+    <div class="container-fluid vh-100">
+      <div class="row">
+            <nav class='container col col-lg-3'>
+                <div class="row h-100">
+                  <div class="col-4 col-lg-8 m-auto">
+                      <button type="button" class='w-50 d-block mr-auto'>h</button>
+                  </div>
+                  <div class="col-4 col-lg-8 m-auto">
+                      <button type="button" class='w-50 d-block m-auto'>h</button>
+                  </div>
+                  <div class="col-4 col-lg-8 m-auto">
+                      <button type="button" class='w-50 d-block ml-auto'>h</button>
+                  </div>
+                </div>
+            </nav>
+        <session class="container col-12 col-lg-9">
+          <%= yield %>
+        </session>
+        <footer class='footer container-flex col-12 position-fixed d-flex d-lg-none justify-content-around'>
+          <button type="button" class='col-2'></button>
+          <button type="button" class='col-2'></button>
+          <button type="button" class='col-2'></button>
+          <button type="button" class='col-2'></button>
+        </footer>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
   </body>
 </html>
