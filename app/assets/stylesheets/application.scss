@@ -3,11 +3,12 @@
 $color-primary: #707AFF ;
 $color-secondary: #AE5AE8;
 $color-accent: #FF2B9D;
+$color-accent-border: #C4213D ;
 $color-text: whitesmoke;
 
 
 * {
-  border: solid red 1px;
+//  border: solid red 1px;
 }
 
 nav {
@@ -15,10 +16,43 @@ nav {
   min-height: 50px;
   background-color: $color-primary;
   color: $color-text;
+  .menu-bar{
+    height: 70%;
+  }
+}
+
+.accent-button{
+  background-color: $color-accent ;
+  border-radius: 20px;
+  color: whitesmoke;
+  width: 80%;
+  margin: auto;
+  font-weight: bold;
+  border: solid $color-accent-border 5px;
+  transition: 0.2s;
+  &:hover{
+    background-color: $color-secondary;
+    transition: 0.2s;
+    border: none;
+    transform: scale(1.2);
+  }
+}
+
+.fancy-text {
+  font-weight: bolder;
+  font-size: 16px;
+  transition: 0.1s;
+  cursor: pointer;
+  margin-right: auto;
+  margin-top:auto;
+  &:hover{
+    font-size: 26px;
+    transition: 0.3s;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-         header {
+         nav {
            height: 100vh;
          }
      }

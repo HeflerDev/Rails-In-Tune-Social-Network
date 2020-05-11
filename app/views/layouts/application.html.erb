@@ -10,30 +10,62 @@
   </head>
 
   <body>
-
     <div class="container-fluid vh-100">
       <div class="row">
             <nav class='container col col-lg-3'>
-                <div class="row h-100">
+              <!-- When the screen is large -->
+
+              <div class="menu-bar d-none d-lg-flex flex-column justify-content-around">
+                <span class='fancy-text'>#Logo</span>
+                <span class='fancy-text'>#Home</span>
+                <span class='fancy-text'>#Explore</span>
+                <span class='fancy-text'>#Notifications</span>
+                <span class='fancy-text'>#Messages</span>
+                <span class='fancy-text'>#BookMarks</span>
+                <span class='fancy-text'>#Lists</span>
+                <span class='fancy-text'>#Profile</span>
+                <span class='fancy-text'>#More(Dropdown Menu)</span>
+                <button type="button" class="accent-button" name="button">Post</button>
+                <div>
+                  <span>Profile Image</span>
+                </div>
+              </div>
+
+              <!-- When the Screen is small -->
+
+                <div class="row h-100 d-lg-none">
                   <div class="col-4 col-lg-8 m-auto">
-                      <button type="button" class='w-50 d-block mr-auto'>h</button>
+                      <button type="button" class='w-50 d-block mr-auto m-lg-auto'>h</button>
                   </div>
                   <div class="col-4 col-lg-8 m-auto">
                       <button type="button" class='w-50 d-block m-auto'>h</button>
                   </div>
                   <div class="col-4 col-lg-8 m-auto">
-                      <button type="button" class='w-50 d-block ml-auto'>h</button>
+                      <button type="button" class='w-50 d-block ml-auto m-lg-auto'>h</button>
                   </div>
                 </div>
+
+              <!---->
+
             </nav>
         <session class="container col-12 col-lg-9">
           <%= yield %>
         </session>
-        <footer class='footer container-flex col-12 position-fixed d-flex d-lg-none justify-content-around'>
-          <button type="button" class='col-2'></button>
-          <button type="button" class='col-2'></button>
-          <button type="button" class='col-2'></button>
-          <button type="button" class='col-2'></button>
+        <footer class='footer container-flex col-12 d-lg-none position-fixed'>
+          <div class='row h-100'>
+            <div class="col-2 m-auto d-block">
+                <button type="button" class='m-auto d-block'>h</button>
+            </div>
+            <div class="col-2 m-auto">
+                <button type="button" class='m-auto d-block'>h</button>
+            </div>
+            <div class="col-2 m-auto">
+                <button type="button" class='m-auto d-block'>h</button>
+            </div>
+            <div class="col-2 m-auto">
+                <button type="button" class='m-auto d-block'>h</button>
+            </div>
+            </div>
         </footer>
       </div>
     </div>
