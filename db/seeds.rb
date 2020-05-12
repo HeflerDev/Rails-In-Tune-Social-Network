@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+  User.create fullname: 'Henrique Figueiredo Hefler', username: 'Henrique'
+
+100.times do
+  username = Faker::FunnyName.name
+  name = Faker::Name.name
+  User.create fullname: name, username: username
+end
