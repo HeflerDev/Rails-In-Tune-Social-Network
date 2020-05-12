@@ -1,10 +1,10 @@
 <section class="container">
     <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class='profile-pic img-fluid mx-auto my-4 d-block col-8 col-md-4 col-lg-4'>
     <div class='text-center'>
-      <span>Username</span> <br>
-      <span>email</span> <br>
-      <span>Bio</span> <br>
-      <span>info</span>
+      <span><%= @user.username %></span> <br>
+      <span>Aka : <%= @user.fullname %></span> <br>
+      <span style='color: gray'>Bio</span> <br>
+      <span style='color: gray'>info</span>
     </div>
 </section>
 <section class='container-fluid my-4 text-center'>
