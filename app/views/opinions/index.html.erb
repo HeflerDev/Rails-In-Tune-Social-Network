@@ -1,6 +1,10 @@
 <% @opinion.each do |opinion| %>
-  <br>
-  <%= opinion.text %>
-  <br>
-  Posted By: <%= opinion.user.username %>
+<session class='m-4'>
+  <div class="container">
+    <%= opinion.text %>
+  </div>
+  <div class='container'>
+    Posted By: <%= opinion.user.username %>
+  </div>
+</session>
 <% end %>

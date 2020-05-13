@@ -1,7 +1,7 @@
 class OpinionsController < ApplicationController
 
   def index
-    @opinion = Opinion.all
+    @opinion = Opinion.order('created_at DESC')
   end
 
   def new

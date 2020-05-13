@@ -17,15 +17,15 @@
               <!-- When the screen is large -->
               <div class="menu-bar d-none d-lg-flex flex-column justify-content-around">
                 <span class='fancy-text'>#Logo</span>
-                <span class='fancy-text'>#Home</span>
+                <span class='fancy-text'><%= link_to '#Feed', feed_path, class:'link_style' %> </span>
                 <span class='fancy-text'>#Explore</span>
                 <span class='fancy-text'>#Notifications</span>
                 <span class='fancy-text'>#Messages</span>
                 <span class='fancy-text'>#BookMarks</span>
                 <span class='fancy-text'>#Lists</span>
-                <span class='fancy-text'>#Profile</span>
+                <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
                 <span class='fancy-text'>#More(Dropdown Menu)</span>
-                <%= link_to 'New Opinion', post_path, class:'accent-button' %>
+                <%= link_to 'New Opinion', post_path, class:'accent-button link_style' %>
                 <div class='row'>
 
                   <% if logged_in? %>
@@ -34,7 +34,7 @@
                       <span class='d-block'><%= current_user.username %></span>
                       <span class='d-block'><%= current_user.fullname %></span>
                     </div>
-                    <%= link_to "Log out", logout_path, method: :delete %>
+                    <%= link_to "Log out", logout_path,class:'link_style', method: :delete %>
                   <% else %>
                     <p> <%= link_to 'Log In', login_path %> to Access Content </p>
                   <% end %>

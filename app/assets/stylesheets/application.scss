@@ -65,6 +65,15 @@ i {
   }
 }
 
+.link_style {
+  color:$color-text;
+  text-decoration: none;
+  &:hover{
+    color:$color-text;
+    text-decoration: none;
+  }
+}
+
 .fancy-text {
   font-weight: bolder;
   font-size: 16px;
@@ -80,6 +89,12 @@ i {
 
 .profile-pic {
   border-radius: 100%;
+}
+
+.form_style {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  color: $color-accent-border;
 }
 
 @media only screen and (min-width: 992px) {
