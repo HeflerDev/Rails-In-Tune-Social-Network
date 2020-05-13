@@ -25,14 +25,19 @@
                 <span class='fancy-text'>#Lists</span>
                 <span class='fancy-text'>#Profile</span>
                 <span class='fancy-text'>#More(Dropdown Menu)</span>
-                <button type="button" class="accent-button" name="button">Post</button>
+                <%= link_to 'New Opinion', post_path, class:'accent-button' %>
                 <div class='row'>
-                  <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class='profile-pic col-4'>
-                  <div class="col-6 my-auto">
-                    <span class='d-block'>User</span>
-                    <span class='d-block'>@user</span>
-                  </div>
-                  <button class='col-2 m-auto'>M</button>
+
+                  <% if logged_in? %>
+                    <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class='profile-pic col-4'>
+                    <div class="col-6 my-auto">
+                      <span class='d-block'><%= current_user.username %></span>
+                      <span class='d-block'><%= current_user.fullname %></span>
+                    </div>
+                    <%= link_to "Log out", logout_path, method: :delete %>
+                  <% else %>
+                    <p> <%= link_to 'Log In', login_path %> to Access Content </p>
+                  <% end %>
                 </div>
               </div>
               <!-- When the Screen is small -->

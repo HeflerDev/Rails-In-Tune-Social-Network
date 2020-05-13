@@ -13,3 +13,9 @@
   name = Faker::Name.name
   User.create fullname: name, username: username
 end
+
+200.times do
+  text = Faker::ChuckNorris.fact
+  commenter_id = rand(1..90)
+  Opinion.create(text:text, user_id:commenter_id)
+end

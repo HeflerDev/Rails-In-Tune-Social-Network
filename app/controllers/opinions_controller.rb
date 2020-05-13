@@ -1,14 +1,19 @@
 class OpinionsController < ApplicationController
+
+  def index
+    @opinion = Opinion.all
+  end
+
   def new
     @opinion = Opinion.new
   end
 
   def create
     @opinion = Opinion.new(opinion_params)
-    # @opinion.user_id = User.find(params[:id])
+    @opinion.user_id = current_user.id
 
-    if @opinion.save  
-      redirect_to @opinion
+    if @opinion.save
+      redirect_to root_path
     else
       render 'new'
     end
