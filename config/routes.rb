@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :follows, only: [:create,:destroy]
+  delete 'unfollow', to: 'follows#destroy'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

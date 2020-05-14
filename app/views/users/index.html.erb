@@ -9,11 +9,16 @@
         <br>
         <%= link_to 'Profile', user, class:'' %>
         <br>
-        <%= form_for Follow.new(followee_id:user.id, follower_id:current_user.id) do |f| %>
-          <%= f.hidden_field :follower_id %>
-          <%= f.hidden_field :followee_id %>
-        <%= f.submit 'Follow User' %>
-      <% end %>
+        <% unless current_user.is_following?(user) %>
+          <%= form_for Follow.new(followee_id:user.id, follower_id:current_user.id) do |f| %>
+            <%= f.hidden_field :follower_id %>
+            <%= f.hidden_field :followee_id %>
+          <%= f.submit 'Follow User' %>
+          <% end %>
+        <% else %>
+          <%=link_to 'Unfollow', unfollow_path(user: user), class:'btn btn-danger', method: :delete %>
+        <% end %>
+
       <% else %>
       <% end %>
     </div>

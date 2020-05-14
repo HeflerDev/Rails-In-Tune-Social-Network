@@ -8,6 +8,13 @@ class FollowsController < ApplicationController
     redirect_to users_path
   end
 
+  def destroy
+    another_user = current_user.followees.find(params[:user])
+    # another_user = User.followers.find params[:user_id]
+    current_user.followees.delete(another_user)
+    redirect_to users_path
+  end
+
   private
   def follows_params
     params.require(:follow).permit(:follower_id,:followee_id)
