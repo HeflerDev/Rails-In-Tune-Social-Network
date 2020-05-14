@@ -5,5 +5,8 @@
   <%= f.label :fullname %>
   <%= f.text_field :fullname %>
   <br>
-  <%= f.submit 'Join Today!' %> 
+  <%= f.label :profile_pic %>
+  <%= f.file_field :avatar %>
+  <br>
+  <%= f.submit 'Join Today!' %>
 <% end %>

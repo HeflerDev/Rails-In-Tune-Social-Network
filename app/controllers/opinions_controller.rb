@@ -1,4 +1,5 @@
 class OpinionsController < ApplicationController
+  before_action :logged_in_user
 
   def index
     @opinion = Opinion.order('created_at DESC')

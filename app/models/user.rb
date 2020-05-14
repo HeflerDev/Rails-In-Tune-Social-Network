@@ -2,6 +2,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: {in: 6..20}
   validates :fullname, presence: true, uniqueness: true, length: {in: 3..50}
 
+  has_one_attached :avatar
+
   has_many :opinions, foreign_key:'author_id', class_name:'Opinion'
 
   has_many :follows
