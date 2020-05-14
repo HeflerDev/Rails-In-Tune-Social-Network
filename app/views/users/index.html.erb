@@ -7,7 +7,13 @@
         <br>
         <%= user.fullname %>
         <br>
-        <%= link_to 'Profile', user, class:'link_style' %>
+        <%= link_to 'Profile', user, class:'' %>
+        <br>
+        <%= form_for Follow.new(followee_id:user.id, follower_id:current_user.id) do |f| %>
+          <%= f.hidden_field :follower_id %>
+          <%= f.hidden_field :followee_id %>
+        <%= f.submit 'Follow User' %>
+      <% end %>
       <% else %>
       <% end %>
     </div>

@@ -10,7 +10,7 @@ class OpinionsController < ApplicationController
 
   def create
     @opinion = Opinion.new(opinion_params)
-    @opinion.user_id = current_user.id
+    @opinion.author_id = current_user.id
 
     if @opinion.save
       redirect_to root_path
