@@ -45,6 +45,14 @@ i {
   height: 100%;
 }
 
+.background-photo {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(asset_path('happy-people-background.jpg')) ;
+  background-position: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
 .accent-button{
   background-color: $color-accent ;
   border-radius: 50px;
@@ -60,7 +68,7 @@ i {
     background-color: $color-hover;
     transition: 0.2s;
     color: $color-accent-border;
-    border: none;
+    border: solid $color-hover 5px;
     transform: scale(1.2);
   }
 }
@@ -71,6 +79,17 @@ i {
   &:hover{
     color:$color-text;
     text-decoration: none;
+  }
+}
+
+.link_style_hover {
+  transition: 0.2s;
+  &:hover{
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+    transition:0.2s;
   }
 }
 
@@ -100,10 +119,19 @@ i {
     }
 }
 
-.form_style {
+.form-style {
   border-radius: 10px;
   background-color: whitesmoke;
   color: $color-accent-border;
+  border: solid $color-accent-border 2px;
+  padding: 3px;
+}
+
+.container-background{
+  background-color: $color-secondary ;
+  border: solid white 5px;
+  border-radius: 10px ;
+  box-shadow: 0px 0px 5px 5px rgba(21,21,56,1);
 }
 
 .opinion-box{

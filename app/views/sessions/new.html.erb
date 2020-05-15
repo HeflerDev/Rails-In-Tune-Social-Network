@@ -1,11 +1,13 @@
-<%= form_for(:session, url: login_path) do |form| %>
-  <hr>
-  <br>
-  <%= form.label :username %>
-  <%= form.text_field :username %>
-  <br>
-  <%= form.submit %>
-  <br>
-  <hr>
-<%end%>
-<p>Don't Have an account? <%= link_to 'Sign Up!', sign_up_path %></p>
+<div class='background-photo'>
+  <div class='container container-background w-50 my-5 p-5'>
+    <%= form_for(:session, url: login_path) do |form| %>
+    <div class='container d-flex flex-column justify-content-around'>
+      <%= form.label :username, class:'my-3' %>
+      <%= form.text_field :username, class:'form-style my-3' %>
+      <%= form.submit 'Log In', :class=>'accent-button my-3' %>
+    </div>
+  <%end%>
+  <p>Don't Have an account?
+    <%= link_to 'Sign Up!', sign_up_path, class:'link_style link_style_hover' %></p>
+  </div>
+</div>
