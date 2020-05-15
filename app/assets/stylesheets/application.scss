@@ -53,8 +53,16 @@ i {
   height: 100vh;
 }
 
+.sticky-form {
+    position: sticky;
+    top:0;
+    background-color: whitesmoke;
+    z-index: 1040;
+}
+
 .accent-button{
   background-color: $color-accent ;
+  text-align: center;
   border-radius: 50px;
   color: whitesmoke;
   width: 60%;

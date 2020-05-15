@@ -1,5 +1,24 @@
-<% @opinion.each do |opinion| %>
 
+<div class='border sticky-form'>
+<%= form_for(@opinion2, url:post_path) do |form| %>
+<div class='d-flex container m-auto p-3'>
+  <div class="circular-landscape my-auto mx-3">
+    <% if current_user.avatar.attached? %>
+      <img class='' src='<%=(url_for(current_user.avatar))%>'>
+      <% else %>
+        <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class=''>
+    <% end %>
+  </div>
+  <div class='d-flex flex-column m-3 w-50'>
+    <%= form.label 'Write Your Opinion', class:'' %>
+    <%= form.text_area :text, class:'form-style w-100' %>
+    <%= form.submit "Post Yay!", class:'accent-button ml-0 w-25' %>
+  </div>
+</div>
+<% end %>
+</div>
+
+<% @opinion.each do |opinion| %>
   <section class='m-4'>
     <div class="container">
       <div class="row d-flex justify-content-start ">

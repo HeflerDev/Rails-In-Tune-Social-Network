@@ -3,6 +3,7 @@ class OpinionsController < ApplicationController
 
   def index
     @opinion = Opinion.order('created_at DESC')
+    @opinion2 = Opinion.new
   end
 
   def new
