@@ -1,12 +1,15 @@
 <%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+  <div class='container d-flex flex-column justify-content-around'>
+  <%= f.label :username, class:'nice-text' %>
+  <%= f.text_field :username, class:'form-style' %>
   <br>
-  <%= f.label :fullname %>
-  <%= f.text_field :fullname %>
+  <%= f.label :fullname, class:'nice-text' %>
+  <%= f.text_field :fullname, class:'form-style' %>
   <br>
-  <%= f.label :profile_pic %>
-  <%= f.file_field :avatar %>
+  <%= f.label 'Profile Picture', class:'nice-text' %>
+  <%= f.file_field :avatar, class:'w-25' %>
   <br>
-  <%= f.submit 'Join Today!' %>
+  <%= f.submit 'Join Today!', :class=>'accent-button' %>
+  </div>
+  <%= link_to 'Back to User Login', login_path, class:'link_style link_style_hover' %>
 <% end %>

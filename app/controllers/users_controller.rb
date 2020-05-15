@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only:[:index,:show]
+  before_action :already_logged?, only:[:new]
+
   def index
     @user = User.all
   end

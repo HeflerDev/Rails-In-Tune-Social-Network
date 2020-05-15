@@ -3,7 +3,7 @@
   <%= form_for(:opinion, url:post_path) do |form| %>
     <div class='row'>
       <%= form.label 'Write Your Opinion', class:'col-5 m-auto' %>
-      <%= form.text_area :text, class:'col-8 form_style mx-auto my-3' %>
+      <%= form.text_area :text, class:'col-8 form-style mx-auto my-3' %>
       <%= form.submit "Post Yay!", class:'accent-button my-3' %>
     </div>
   <% end %>

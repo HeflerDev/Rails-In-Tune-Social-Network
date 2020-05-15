@@ -26,4 +26,10 @@ module SessionsHelper
       end
    end
 
+   def already_logged?
+     if logged_in?
+       redirect_to users_path
+     end
+   end
+
 end
