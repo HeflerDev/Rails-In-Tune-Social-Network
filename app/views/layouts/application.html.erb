@@ -8,29 +8,33 @@
     <script src="https://kit.fontawesome.com/yourcode.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Merienda+One&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body
+    <% unless logged_in? %>
+      class='background-photo vh-100'
+    <% end %>
+  >
     <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
         <nav class='container d-flex flex-column justify-content-around col col-lg-3'>
           <!-- When the screen is large -->
           <div class="">
-            <span class='fancy-text'>#Logo</span>
+            <span class='logotype'>In#Tune</span>
           </div>
           <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
             <span class='fancy-text'><%= link_to '#Feed', feed_path, class:'link_style' %>
             </span>
-            <span class='fancy-text'>#Explore</span>
-            <span class='fancy-text'>#Notifications</span>
-            <span class='fancy-text'>#Messages</span>
-            <span class='fancy-text'>#BookMarks</span>
-            <span class='fancy-text'>#Lists</span>
+            <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
+            <span class='fancy-text disabled'><%= link_to '#Notifications', notifications_path, class:'link_style' %></span>
+            <span class='fancy-text disabled'>#Messages</span>
+            <span class='fancy-text disabled'>#BookMarks</span>
+            <span class='fancy-text disabled'>#Lists</span>
             <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
-            <span class='fancy-text'>#More(Dropdown Menu)</span>
-            <%= link_to 'New Opinion', post_path, class:'accent-button m-auto' %>
-
+            <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
             <div class='container'>
               <div class='d-flex'>
                 <div class="circular-landscape">
@@ -65,6 +69,7 @@
           <!---->
         </nav>
       <% end %>
+
         <session class="container-fluid m-0 p-0 col-12 col-lg-9">
           <!--
           <div class="inside-header">

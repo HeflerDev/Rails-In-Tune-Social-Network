@@ -6,10 +6,36 @@ $color-accent: #FF2B9D;
 $color-accent-border: #C4213D ;
 $color-text: whitesmoke;
 $color-hover: #52FFC2;
+$color-background: rgb(180,160,255);
 
+body{
+  background-color: $color-background ;
+}
+
+.logotype {
+  font-family: 'Merienda One', cursive;
+  font-size: 36px;
+  transition: 0.2s;
+  &:hover{
+    transition: 0.2s;
+    transform: scale(1.1);
+    text-shadow: 0 0 5px rgba(255,255,255,1);
+  }
+}
+
+.in-login {
+  color: white;
+  text-align: center;
+  font-size: 48px;
+  margin-left: 50%;
+}
 
 * {
 //  border: solid red 1px;
+}
+
+.disabled{
+  color: gray !important;
 }
 
 nav {
@@ -47,10 +73,7 @@ i {
 
 .background-photo {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(asset_path('happy-people-background.jpg')) ;
-  background-position: center;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
+  background-repeat: no-repeat;
 }
 
 .sticky-form {
@@ -65,9 +88,7 @@ i {
   text-align: center;
   border-radius: 50px;
   color: whitesmoke;
-  width: 60%;
   min-height: 32px;
-  height: 10%;
   margin: auto;
   font-weight: bold;
   border: solid $color-accent-border 5px;
@@ -75,6 +96,7 @@ i {
   &:hover{
     background-color: $color-hover;
     transition: 0.2s;
+    text-decoration: none;
     color: $color-accent-border;
     border: solid $color-hover 5px;
     transform: scale(1.2);
@@ -120,6 +142,7 @@ i {
   cursor: pointer;
   margin-right: auto;
   margin-top:auto;
+  font-family: 'Montserrat', sans-serif;
   &:hover{
     font-size: 26px;
     transition: 0.3s;
@@ -128,8 +151,9 @@ i {
 
 .nice-text{
   font-weight: bolder;
-  font-size:24px;
+  font-size:16px;
   color:whitesmoke;
+  font-family: 'Dancing Script', cursive;
 }
 
 .circular-landscape {
@@ -165,11 +189,25 @@ i {
   padding: 3px;
 }
 
+.opinion-title {
+  font-weight: bolder;
+  font-size: 24px;
+  border-radius: 10px;
+  color: $color-text;
+  background-color: $color-primary;
+}
+
 .container-background{
   background-color: $color-secondary ;
   border: solid white 5px;
   border-radius: 10px ;
   box-shadow: 0px 0px 5px 5px rgba(21,21,56,1);
+  min-width: 310px !important;
+}
+
+.partial-background {
+  background-color: whitesmoke ;
+  border-radius: 2px;
 }
 
 .opinion-box{
@@ -184,6 +222,11 @@ i {
   color:$color-accent-border;
   background-color: $color-hover ;
   border-radius: 50%;
+}
+
+.author-name {
+  color: $color-secondary;
+  font-style: italic;
 }
 
 @media only screen and (min-width: 992px) {

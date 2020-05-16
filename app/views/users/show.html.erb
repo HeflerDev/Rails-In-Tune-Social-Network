@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container partial-background p-5">
 
   <div class="circular-landscape-big mx-auto my-5">
     <% if @user.avatar.attached? %>
@@ -9,17 +9,19 @@
   </div>
 
     <div class='text-center'>
-      <span><%= @user.username %></span>
+      <span><%= @user.fullname %></span>
       <br>
       <span>Aka :
-        <%= @user.fullname %></span>
+        <%= @user.username %></span>
       <br>
-      <span style='color: gray'>Bio</span>
+      <p class='m-2 p-2'>
+        "<%= @user.biography %>"
+      </p>
       <br>
       <span style='color: gray'>info</span>
     </div>
   </section>
-  <section class='container-fluid my-4 text-center'>
+  <section class='container-fluid partial-background my-4 text-center'>
     <div class="row">
       <span class='col-4'>Posts</span>
       <span class='col-4'>Activity</span>
@@ -27,8 +29,11 @@
     </div>
   </section>
   <% @user.opinions.each do |opinion| %>
-  <section class='m-4 container'>
+  <section class='my-4 py-4 w-75 container partial-background  border rounded'>
     <div class="container">
+      <div class="opinion-title p-3 my-3 rounded">
+        <%= opinion.title %>
+      </div>
       <div class="row d-flex justify-content-start ">
         <div class="circular-landscape">
           <% if opinion.author.avatar.attached? %>

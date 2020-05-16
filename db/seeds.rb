@@ -11,11 +11,13 @@
 100.times do
   username = Faker::FunnyName.name
   name = Faker::Name.name
-  User.create fullname: name, username: username
+  quote = Faker::Quote.matz
+  User.create fullname: name, username: username, biography: quote
 end
 
 200.times do
   text = Faker::ChuckNorris.fact
+  title = Faker::App.name
   commenter_id = rand(1..90)
-  Opinion.create(text:text, author_id:commenter_id)
+  Opinion.create(text:text,title:title, author_id:commenter_id)
 end

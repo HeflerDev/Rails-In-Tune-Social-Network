@@ -1,12 +1,15 @@
 <%= form_for @user do |f| %>
   <div class='container d-flex flex-column justify-content-around'>
-  <%= f.label :username, class:'nice-text' %>
+  <%= f.label 'First, your Username', class:'nice-text' %>
   <%= f.text_field :username, class:'form-style' %>
   <br>
-  <%= f.label :fullname, class:'nice-text' %>
-  <%= f.text_field :fullname, class:'form-style' %>
+  <%= f.label 'Now, your fullname', class:'nice-text' %>
+  <%= f.text_field :fullname, class:'form-style w-100' %>
   <br>
-  <%= f.label 'Profile Picture', class:'nice-text' %>
+  <%= f.label 'Add a Short description about yourself', class:'nice-text' %>
+  <%= f.text_area :biography, class:'form-style' %>
+  <br>
+  <%= f.label 'Then, upload a profile picture!', class:'nice-text' %>
   <%= f.file_field :avatar, class:'w-25' %>
   <br>
   <%= f.submit 'Join Today!', :class=>'accent-button' %>

@@ -19,8 +19,11 @@
 </div>
 
 <% @opinion.each do |opinion| %>
-  <section class='m-4'>
+  <section class='m-4 partial-background p-4 border'>
     <div class="container">
+      <div class="d-flex opinion-title my-4 p-3">
+        <span class=''><%= opinion.title %></span>
+      </div>
       <div class="row d-flex justify-content-start ">
         <div class="circular-landscape">
           <% if opinion.author.avatar.attached? %>
@@ -34,8 +37,8 @@
         </div>
       </div>
       <div class='container m-3'>
-        Posted By:
-        <%= opinion.author.username %>
+        <span class='author-name'>Posted By:
+        <%= link_to opinion.author.username, opinion.author %></span>
       </div>
     </div>
   </section>
