@@ -16,20 +16,20 @@
     <% unless logged_in? %>
       class='background-photo vh-100'
     <% end %>
-  >
+   >
     <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
         <nav class='container d-flex flex-column justify-content-around col col-lg-3'>
           <!-- When the screen is large -->
-          <div class="">
+          <div class="d-none d-lg-flex">
             <span class='logotype'>In#Tune</span>
           </div>
           <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
             <span class='fancy-text'><%= link_to '#Feed', feed_path, class:'link_style' %>
             </span>
             <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
-            <span class='fancy-text disabled'><%= link_to '#Notifications', notifications_path, class:'link_style' %></span>
+            <span class='fancy-text disabled'><%= link_to '#Friends', friends_path, class:'link_style' %></span>
             <span class='fancy-text disabled'>#Messages</span>
             <span class='fancy-text disabled'>#BookMarks</span>
             <span class='fancy-text disabled'>#Lists</span>
@@ -88,13 +88,13 @@
         <% if logged_in? %>
         <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-fixed'>
           <div class='m-auto'>
-            <span class='fa fa-home '></span>
+            <%= link_to '', current_user, class:'fa fa-home' %>
           </div>
           <div class='m-auto'>
-            <span class='fa fa-search '></span>
+            <%= link_to '', users_path, class:'fa fa-search' %>
           </div>
           <div class='m-auto'>
-            <span class='fa fa-bell'></span>
+            <%= link_to '', feed_path, class:'fa fa-bell' %>
           </div>
           <div class='m-auto'>
             <span class='fa fa-envelope '></span>

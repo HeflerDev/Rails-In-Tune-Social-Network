@@ -15,7 +15,7 @@ class OpinionsController < ApplicationController
     @opinion.author_id = current_user.id
 
     if @opinion.save
-      redirect_to root_path
+      redirect_to feed_path
     else
       render 'new'
     end
@@ -23,6 +23,6 @@ class OpinionsController < ApplicationController
 
   private
     def opinion_params
-      params.require(:opinion).permit(:text)
+      params.require(:opinion).permit(:text, :title)
     end
 end
