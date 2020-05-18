@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only:[:index,:show]
   before_action :already_logged?, only:[:new]
+  before_action :right_user?, only:[:edit]
 
   def friends
     @user = User.all
@@ -8,6 +9,20 @@ class UsersController < ApplicationController
 
   def index
     @user = User.all
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def new

@@ -32,4 +32,11 @@ module SessionsHelper
      end
    end
 
+   def right_user?
+     if User.find(params[:id]) != current_user
+       redirect_to current_user
+       flash[:danger] = "Error: Access Denied"
+     end
+   end
+
 end
