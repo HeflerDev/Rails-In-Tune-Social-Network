@@ -22,7 +22,8 @@ class OpinionsController < ApplicationController
   end
 
   private
-    def opinion_params
-      params.require(:opinion).permit(:text, :title)
-    end
+
+  def opinion_params
+    params.require(:opinion).permit(:text, :title)
+  end
 end
