@@ -8,70 +8,95 @@
     <script src="https://kit.fontawesome.com/yourcode.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Merienda+One&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
 
   <body>
+    <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
-            <nav class='container col col-lg-3'>
-              <!-- When the screen is large -->
-              <div class="menu-bar d-none d-lg-flex flex-column justify-content-around">
-                <span class='fancy-text'>#Logo</span>
-                <span class='fancy-text'>#Home</span>
-                <span class='fancy-text'>#Explore</span>
-                <span class='fancy-text'>#Notifications</span>
-                <span class='fancy-text'>#Messages</span>
-                <span class='fancy-text'>#BookMarks</span>
-                <span class='fancy-text'>#Lists</span>
-                <span class='fancy-text'>#Profile</span>
-                <span class='fancy-text'>#More(Dropdown Menu)</span>
-                <button type="button" class="accent-button" name="button">Post</button>
-                <div class='row'>
-                  <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class='profile-pic col-4'>
-                  <div class="col-6 my-auto">
-                    <span class='d-block'>User</span>
-                    <span class='d-block'>@user</span>
-                  </div>
-                  <button class='col-2 m-auto'>M</button>
+        <nav class='container d-flex flex-column justify-content-around col col-lg-3'>
+          <!-- When the screen is large -->
+          <div class="d-none d-lg-flex">
+            <span class='logotype'>In#Tune</span>
+          </div>
+          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
+            <span class='fancy-text'><%= link_to '#Feed', feed_path, class:'link_style' %>
+            </span>
+            <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
+            <span class='fancy-text disabled'><%= link_to '#Friends', friends_path, class:'link_style' %></span>
+            <span class='fancy-text disabled'>#Messages</span>
+            <span class='fancy-text disabled'>#BookMarks</span>
+            <span class='fancy-text disabled'>#Lists</span>
+            <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
+            <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
+            <div class='container'>
+              <div class='d-flex'>
+                <div class="circular-landscape">
+                  <% if current_user.avatar.attached? %>
+                    <img class='' src='<%=(url_for(current_user .avatar))%>'>
+                  <% else %>
+                    <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class=''>
+                  <% end %>
+                </div>
+                <div class="col-6 my-auto">
+                  <span class='d-block'>@<%= current_user.username %></span>
+                  <span class='d-block'><%= current_user.fullname %></span>
                 </div>
               </div>
-              <!-- When the Screen is small -->
-                <div class="h-100 container d-flex flex-row justify-content-around d-lg-none">
-                  <div class="col-4 m-auto text-left">
-                    <span class='icon fa fa-bars'></span>
-                  </div>
-                  <div class="icon col-4 m-auto text-center">
-                      <span>Logo</span>
-                  </div>
-                  <div class="icon col-4 m-auto text-right">
-                      <span class='	fa fa-gears'></span>
-                  </div>
-                </div>
-              <!---->
-            </nav>
+              <div class='d-flex justify-content-end'>
+                <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
+              </div>
+            </div>
+          </div>
+          <!-- When the Screen is small -->
+          <div class="h-100 container d-flex flex-row justify-content-around d-lg-none">
+            <div class="col-4 m-auto text-left">
+              <span class='icon fa fa-bars'></span>
+            </div>
+            <div class="icon col-4 m-auto text-center">
+              <span>Logo</span>
+            </div>
+            <div class="icon col-4 m-auto text-right">
+              <span class='	fa fa-gears'></span>
+            </div>
+          </div>
+          <!---->
+        </nav>
+      <% end %>
+
         <session class="container-fluid m-0 p-0 col-12 col-lg-9">
+          <!--
           <div class="inside-header">
             Hello World
           </div>
-          <%= yield %>
+          -->
+          <div <% unless logged_in? %>class='background-photo'<% end %>>
+            <%= yield %>
+          </div>
+        <!--
           <div class="inside-footer">
             Hello World
           </div>
+        -->
         </session>
+        <% if logged_in? %>
         <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-fixed'>
-                <div class='m-auto'>
-                  <span class='fa fa-home '></span>
-                </div>
-                <div class='m-auto'>
-                  <span class='fa fa-search '></span>
-                </div>
-                <div class='m-auto'>
-                  <span class='fa fa-bell'></span>
-                </div>
-                <div class='m-auto'>
-                  <span class='fa fa-envelope '></span>
-                </div>
+          <div class='m-auto'>
+            <%= link_to '', current_user, class:'fa fa-home' %>
+          </div>
+          <div class='m-auto'>
+            <%= link_to '', users_path, class:'fa fa-search' %>
+          </div>
+          <div class='m-auto'>
+            <%= link_to '', feed_path, class:'fa fa-bell' %>
+          </div>
+          <div class='m-auto'>
+            <span class='fa fa-envelope '></span>
+          </div>
         </footer>
+        <% end %>
       </div>
     </div>
   </body>

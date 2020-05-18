@@ -1,0 +1,17 @@
+  <%= form_for(:opinion, url:post_path) do |form| %>
+    <div class='d-flex flex-column'>
+      <%= form.label 'Write Your Opinion', class:'m-auto nice-text inside' %>
+      <% if @opinion.errors.any? %>
+        <span style='color:red'><%= @opinion.errors.count %> <%= 'error'.pluralize(@opinion.errors.count)  %> found.</span>
+          <div class='container'>
+          <% @opinion.errors.full_messages.each do |error| %>
+            <br>
+            <span style='color:red'><%= error %></span>
+          <% end %>
+          </div>
+      <% end %>
+      <%= form.text_field :title, class:'form-style w-50 my-3',placeholder:'Topic' %>
+      <%= form.text_area :text, class:'form-style w-75 my-3', placeholder:'Insert your opinion here...' %>
+      <%= form.submit "Post Yay!", class:'accent-button my-3' %>
+    </div>
+  <% end %>

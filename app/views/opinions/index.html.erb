@@ -1,0 +1,47 @@
+
+<div class='border sticky-form d-none d-lg-block'>
+<%= form_for(@opinion2, url:post_path) do |form| %>
+<div class='d-flex container m-auto p-3'>
+  <div class="circular-landscape my-auto mx-3">
+    <% if current_user.avatar.attached? %>
+      <img class='' src='<%=(url_for(current_user.avatar))%>'>
+      <% else %>
+        <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class=''>
+    <% end %>
+  </div>
+  <div class='d-flex flex-column m-3 w-50'>
+    <%= form.label 'Write Your Opinion...', class:'nice-text inside' %>
+    <%= form.text_field :title, class:'form-style w-100 m-2' %>
+    <%= form.text_area :text, class:'form-style w-100 m-2' %>
+    <%= form.submit "Post Yay!", class:'accent-button ml-0 w-25 m-2' %>
+  </div>
+</div>
+<% end %>
+</div>
+
+<% @opinion.each do |opinion| %>
+  <section class='m-4 partial-background p-4 border'>
+    <div class="container">
+      <div class="d-flex opinion-title my-4 p-3">
+        <span class=''><%= opinion.title %></span>
+      </div>
+      <div class="row d-flex justify-content-start ">
+        <div class="circular-landscape">
+          <% if opinion.author.avatar.attached? %>
+            <img class='' src='<%=(url_for(opinion.author.avatar))%>'>
+            <% else %>
+              <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class=''>
+          <% end %>
+        </div>
+        <div class='opinion-box ml-3 p-2'>
+          <%= opinion.text %>
+        </div>
+      </div>
+      <div class='container m-3'>
+        <span class='author-name'>Posted By:
+        <%= link_to opinion.author.username, opinion.author %></span>
+      </div>
+    </div>
+  </section>
+
+<% end %>
