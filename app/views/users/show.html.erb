@@ -22,7 +22,9 @@
         <% end %>
       </p>
       <br>
-      <span style='color: gray'>info</span>
+      <% if @user == current_user %>
+        <%= link_to 'Edit Profile', edit_user_path, class:'accent-button p-1' %>
+      <% end %>
     </div>
   </section>
   <section class='container-fluid partial-background my-4 text-center'>

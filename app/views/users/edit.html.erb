@@ -1,0 +1,28 @@
+<div class="container partial-background my-5 py-3">
+  <%= form_for @user do |f| %>
+    <div class="container">
+      <% if @user.errors.any? %>
+        <span style='color:red'><%= @user.errors.count %> <%= 'error'.pluralize(@user.errors.count)  %> found.</span>
+        <% @user.errors.full_messages.each do |error| %>
+        <br>
+        <span class='error-text'><%= error %></span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class='container d-flex flex-column justify-content-around'>
+      <%= f.label 'Username', class:'nice-text inside' %>
+      <%= f.text_field :username, class:'form-style w-100', placeholder:'Try something cool' %>
+      <br>
+      <%= f.label 'Full name', class:'nice-text inside' %>
+      <%= f.text_field :fullname, class:'form-style w-100', placeholder:"Tell me your beautifull name" %>
+      <br>
+      <%= f.label 'Biography', class:'nice-text inside' %>
+      <%= f.text_area :biography, class:'form-style w-100', placeholder:'Up to 240 Characters'%>
+      <br>
+      <%= f.label 'Profile Pic', class:'nice-text inside' %>
+      <%= f.file_field :avatar, class:'w-25' %>
+      <br>
+      <%= f.submit 'Confirm', :class=>'accent-button' %>
+    </div>
+  <% end %>
+</div>
