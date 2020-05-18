@@ -1,18 +1,27 @@
 <%= form_for @user do |f| %>
+  <div class="container">
+    <% if @user.errors.any? %>
+      <span style='color:red'><%= @user.errors.count %> <%= 'error'.pluralize(@user.errors.count)  %> found.</span>
+      <% @user.errors.full_messages.each do |error| %>
+      <br>
+      <span class='error-text'><%= error %></span>
+      <% end %>
+    <% end %>
+  </div>
   <div class='container d-flex flex-column justify-content-around'>
-  <%= f.label 'First, your Username', class:'nice-text' %>
-  <%= f.text_field :username, class:'form-style' %>
-  <br>
-  <%= f.label 'Now, your fullname', class:'nice-text' %>
-  <%= f.text_field :fullname, class:'form-style w-100' %>
-  <br>
-  <%= f.label 'Add a Short description about yourself', class:'nice-text' %>
-  <%= f.text_area :biography, class:'form-style' %>
-  <br>
-  <%= f.label 'Then, upload a profile picture!', class:'nice-text' %>
-  <%= f.file_field :avatar, class:'w-25' %>
-  <br>
-  <%= f.submit 'Join Today!', :class=>'accent-button' %>
+    <%= f.label 'First, your Username', class:'nice-text' %>
+    <%= f.text_field :username, class:'form-style w-100', placeholder:'Try something cool' %>
+    <br>
+    <%= f.label 'Now, your fullname', class:'nice-text' %>
+    <%= f.text_field :fullname, class:'form-style w-100', placeholder:"Tell me your beautifull name" %>
+    <br>
+    <%= f.label 'Add a Short description about yourself', class:'nice-text' %>
+    <%= f.text_area :biography, class:'form-style w-100', placeholder:'Up to 240 Characters'%>
+    <br>
+    <%= f.label 'Then, upload a profile picture!', class:'nice-text' %>
+    <%= f.file_field :avatar, class:'w-25' %>
+    <br>
+    <%= f.submit 'Join Today!', :class=>'accent-button' %>
   </div>
   <%= link_to 'Back to User Login', login_path, class:'link_style link_style_hover' %>
 <% end %>

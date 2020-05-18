@@ -1,9 +1,9 @@
   <span class='logotype in-login'>In#Tune</span>
 
-  <div class='container container-background w-50 my-5 p-5'>
+  <div class='container container-background w-50 my-4 p-5'>
     <%= form_for(:session, url: login_path) do |form| %>
     <div class='container d-flex flex-column justify-content-around'>
-      <%= form.label :username, class:'my-3' %>
+      <%= form.label :username, class:'my-3 nice-text' %>
       <%= form.text_field :username, class:'form-style my-3' %>
       <%= form.submit 'Log In', :class=>'accent-button my-3' %>
     </div>

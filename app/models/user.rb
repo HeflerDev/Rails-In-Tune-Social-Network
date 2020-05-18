@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: {in: 6..20}
   validates :fullname, presence: true, uniqueness: true, length: {in: 3..50}
+  validates :biography, length: {maximum: 240}
 
   has_one_attached :avatar
 

@@ -12,11 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Merienda+One&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
 
-  <body
-    <% unless logged_in? %>
-      class='background-photo vh-100'
-    <% end %>
-   >
+  <body>
     <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
@@ -50,7 +46,7 @@
                 </div>
               </div>
               <div class='d-flex justify-content-end'>
-                <%= link_to "Log out", logout_path,class:'link_style', method: :delete %>
+                <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
               </div>
             </div>
           </div>
@@ -76,7 +72,7 @@
             Hello World
           </div>
           -->
-          <div>
+          <div <% unless logged_in? %>class='background-photo'<% end %>>
             <%= yield %>
           </div>
         <!--

@@ -15,7 +15,11 @@
         <%= @user.username %></span>
       <br>
       <p class='m-2 p-2'>
-        "<%= @user.biography %>"
+        <% if @user.biography %>
+          "<%= @user.biography %>"
+        <% else %>
+          No Biography
+        <% end %>
       </p>
       <br>
       <span style='color: gray'>info</span>
