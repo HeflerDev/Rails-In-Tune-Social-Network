@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_action :right_user?, only:[:edit]
 
   def friends
-    @user = User.all
+    @user = User.order('created_at DESC')
   end
 
   def index
-    @user = User.all
+    @user = User.order('created_at DESC')
   end
 
   def edit
