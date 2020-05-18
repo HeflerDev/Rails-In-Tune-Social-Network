@@ -29,9 +29,24 @@
   </section>
   <section class='container-fluid partial-background my-4 text-center'>
     <div class="row">
-      <span class='col-4'>Posts</span>
-      <span class='col-4'>Activity</span>
-      <span class='col-4'>Liked Things</span>
+      <!-- Number of User opinions -->
+      <% if @user.opinions.any? %>
+        <span class='col-4'><%= @user.opinions.count %> <%= 'opinion'.pluralize(@user.opinions.count) %> shared. </span>
+      <% else %>
+        <span class='col-4'> This user didn't share any opinion. </span>
+      <% end %>
+      <!-- Number of Followers -->
+      <% if @user.followers.any? %>
+        <span class='col-4'>This User has <%= @user.followers.count %> <%= 'follower'.pluralize(@user.followers.count) %></span>
+      <% else %>
+        <span class='col-4'>This User is not being followed by anyone</span>
+      <% end %>
+      <!-- Number of Followees -->
+      <% if @user.followees.any? %>
+        <span class='col-4'>This User has <%= @user.followees.count %> <%= 'followee'.pluralize(@user.followees.count) %></span>
+      <% else %>
+        <span class='col-4'>This User is not following anyone</span>
+      <% end %>
     </div>
   </section>
   <% @user.opinions.each do |opinion| %>
