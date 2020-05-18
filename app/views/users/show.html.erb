@@ -14,6 +14,20 @@
       <span>Aka :
         <%= @user.username %></span>
       <br>
+      <!-- Checks if Is the current user and change between follow and unfollow button -->
+      <% if @user != current_user %>
+        <% unless @user.is_being_followed?(current_user) %>
+          <%= form_for Follow.new(followee_id:@user.id, follower_id:current_user.id) do |f| %>
+            <%= f.hidden_field :follower_id %>
+            <%= f.hidden_field :followee_id %>
+            <%= f.submit 'Follow User',class:'btn btn-primary' %>
+          <% end %>
+        <% else %>
+          <%=link_to 'Unfollow', unfollow_path(user: @user), class:'btn btn-danger', method: :delete %>
+        <% end %>
+      <% end %>
+      <br>
+
       <p class='m-2 p-2'>
         <% if @user.biography %>
           "<%= @user.biography %>"
