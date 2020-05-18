@@ -30,25 +30,44 @@
   <section class='container-fluid partial-background my-4 text-center'>
     <div class="row">
       <!-- Number of User opinions -->
-      <% if @user.opinions.any? %>
-        <span class='col-4'><%= @user.opinions.count %> <%= 'opinion'.pluralize(@user.opinions.count) %> shared. </span>
-      <% else %>
-        <span class='col-4'> This user didn't share any opinion. </span>
-      <% end %>
+      <div class='col-12 col-lg-4'>
+        <% if @user.opinions.any? %>
+          <span><%= @user.opinions.count %> <%= 'opinion'.pluralize(@user.opinions.count) %> shared. </span>
+          <% @user.opinions.each do |opinion| %>
+            <br>
+            <%= opinion.title %>
+          <% end %>
+        <% else %>
+          <span> This user didn't share any opinion. </span>
+        <% end %>
+      </div>
       <!-- Number of Followers -->
-      <% if @user.followers.any? %>
-        <span class='col-4'>This User has <%= @user.followers.count %> <%= 'follower'.pluralize(@user.followers.count) %></span>
-      <% else %>
-        <span class='col-4'>This User is not being followed by anyone</span>
-      <% end %>
+      <div class='col-12 col-lg-4'>
+        <% if @user.followers.any? %>
+          <span>This User has <%= @user.followers.count %> <%= 'follower'.pluralize(@user.followers.count) %></span>
+          <% @user.followers.each do |follower| %>
+            <br>
+            <%= link_to follower.username, follower %>
+          <% end %>
+        <% else %>
+          <span>This User is not being followed by anyone</span>
+        <% end %>
+      </div>
       <!-- Number of Followees -->
-      <% if @user.followees.any? %>
-        <span class='col-4'>This User has <%= @user.followees.count %> <%= 'followee'.pluralize(@user.followees.count) %></span>
-      <% else %>
-        <span class='col-4'>This User is not following anyone</span>
-      <% end %>
+      <div class='col-12 col-lg-4'>
+        <% if @user.followees.any? %>
+          <span>This User has <%= @user.followees.count %> <%= 'followee'.pluralize(@user.followees.count) %></span>
+          <% @user.followees.each do |followee| %>
+            <br>
+            <%= link_to followee.username, followee %>
+          <% end %>
+        <% else %>
+          <span>This User is not following anyone</span>
+        <% end %>
+      </div>
     </div>
   </section>
+
   <% @user.opinions.each do |opinion| %>
   <section class='my-4 py-4 w-75 container partial-background  border rounded'>
     <div class="container">
