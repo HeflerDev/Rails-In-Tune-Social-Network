@@ -1,8 +1,8 @@
 class FollowsController < ApplicationController
-
   def new
     @follow = Follow.new
   end
+
   def create
     Follow.create!(follows_params)
     redirect_to users_path
@@ -15,7 +15,8 @@ class FollowsController < ApplicationController
   end
 
   private
+
   def follows_params
-    params.require(:follow).permit(:follower_id,:followee_id)
+    params.require(:follow).permit(:follower_id, :followee_id)
   end
 end

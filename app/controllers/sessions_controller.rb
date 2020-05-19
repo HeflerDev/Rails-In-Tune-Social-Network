@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :already_logged?, only:[:new]
+  before_action :already_logged?, only: [:new]
   def new
     @user = User.new
   end

@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only:[:index,:show]
-  before_action :already_logged?, only:[:new]
-  before_action :right_user?, only:[:edit]
+  before_action :logged_in_user, only: %i[index show]
+  before_action :already_logged?, only: [:new]
+  before_action :right_user?, only: [:edit]
 
   def friends
-    @user = User.all
+    @user = User.order('created_at DESC')
   end
 
   def index
-    @user = User.all
+    @user = User.order('created_at DESC')
   end
 
   def edit
@@ -44,7 +44,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:username, :fullname, :avatar, :biography)
-    end
+
+  def user_params
+    params.require(:user).permit(:username, :fullname, :avatar, :biography)
+  end
 end
