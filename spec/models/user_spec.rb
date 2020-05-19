@@ -32,5 +32,8 @@ RSpec.describe User, type: :model do
       subject.biography = nil
       expect(subject).to be_valid
     end
+    describe 'associations' do
+      it { should have_many(:opinions) }
+    end
   end
 end
