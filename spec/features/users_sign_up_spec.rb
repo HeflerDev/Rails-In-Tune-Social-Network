@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Guest Sign up:' do
-  describe 'when guest visits the sign up page' do
+  context 'when guest visits the sign up page' do
+
     it 'has the correct content' do
       visit sign_up_path
       expect(page).to have_content('First, your username')
@@ -17,14 +18,25 @@ RSpec.feature 'Guest Sign up:' do
       expect(page).to have_content('FullExample')
       expect(page).to have_content('"Some Description"')
     end
-  end
 
+    it 'Doesnt log with invalid username' do
+      sign_up('', 'FullExample','Some Description')
+      expect(page).to have_content("Username can't be blank")
+      expect(page).to have_content("Username is too short (minimum is 6 characters)")
+      expect(page).to have_current_path '/users'
+      sign_up('John','FullExample','Some Description')
+      expect(page).to have_content("Username is too short (minimum is 6 characters)")
+      expect(page).to have_current_path '/users'
+    end
 
-  def sign_up(username, fullname, bio)
-    visit sign_up_path
-    fill_in 'user_username', with: username
-    fill_in 'user_fullname', with: fullname
-    fill_in 'user_biography', with: bio
-    click_button 'Join Today!'
+    it "Doesn't log with invalid Fullname" do
+      sign_up('Example','','Some Description')
+      expect(page).to have_content("Fullname can't be blank")
+      expect(page).to have_content("Fullname is too short (minimum is 3 characters)")
+      expect(page).to have_current_path '/users'
+      sign_up('Example','xy','Some Description')
+      expect(page).to have_content("Fullname is too short (minimum is 3 characters)")
+      expect(page).to have_current_path '/users'
+    end
   end
 end

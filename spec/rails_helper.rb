@@ -69,3 +69,20 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+# Developer Custom Methods
+
+# Method to sign up
+def sign_up(username, fullname, bio)
+  visit sign_up_path
+  fill_in 'user_username', with: username
+  fill_in 'user_fullname', with: fullname
+  fill_in 'user_biography', with: bio
+  click_button 'Join Today!'
+end
+
+def post_opinion(title, text)
+  fill_in 'opinion_text', with: text
+  fill_in 'opinion_title', with: title
+  click_button 'Post Yay!'
+end
