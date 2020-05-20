@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'User make post:' do
-
   context 'When user creates a post' do
     it 'post with valid data' do
       sign_up('Example', 'FullExample','Biography')

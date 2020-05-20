@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   before_action :already_logged?, only: [:new]
   def new
-    @user = User.new
+
   end
 
   def create
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to(root_path)
       flash[:success] = 'Access Granted'
     else
-      flash.now[warning] = 'Access Denied'
+      flash.now[:warning] = "The User Doesn't Exists"
       render 'new'
     end
   end
