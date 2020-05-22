@@ -18,22 +18,13 @@
       <div class="row">
         <nav class='container d-flex flex-column justify-content-around col col-lg-3'>
           <!-- When the screen is large -->
-          <div class="d-none d-lg-flex">
-            <span class='logotype'>In#Tune</span>
-          </div>
-          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
-            <span class='fancy-text'><%= link_to '#Feed', feed_path, class:'link_style' %>
-            </span>
-            <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
-            <span class='fancy-text disabled'><%= link_to '#Friends', friends_path, class:'link_style' %></span>
-            <span class='fancy-text disabled'>#Messages</span>
-            <span class='fancy-text disabled'>#BookMarks</span>
-            <span class='fancy-text disabled'>#Lists</span>
-            <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
-            <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
+          <section class='superior'>
+            <div class="d-none d-lg-flex">
+              <span class='logotype'>In#Tune</span>
+            </div>
             <div class='container'>
               <div class='d-flex'>
-                <div class="circular-landscape">
+                <div class="circular-landscape-small">
                   <% if current_user.avatar.attached? %>
                     <img class='' src='<%=(url_for(current_user .avatar))%>'>
                   <% else %>
@@ -42,13 +33,31 @@
                 </div>
                 <div class="col-6 my-auto">
                   <span class='d-block'>@<%= current_user.username %></span>
-                  <span class='d-block'><%= current_user.fullname %></span>
                 </div>
               </div>
-              <div class='d-flex justify-content-end'>
-                <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
-              </div>
             </div>
+            <div class="d-flex">
+              <div class='w-50 text-center d-flex flex-column border-p'>
+                <span><%= current_user.followers.count %></span>
+                <span>Followers</span>
+              </div>
+              <div class="w-50 text-center d-flex flex-column border-p">
+                <span><%= current_user.followees.count %></span>
+                <span>Following</span>
+              </div>
+
+            </div>
+          </section>
+          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
+            <span class='fancy-text'><%= link_to '#Feed', root_path, class:'link_style' %>
+            </span>
+            <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
+            <span class='fancy-text disabled'><%= link_to '#Friends', friends_path, class:'link_style' %></span>
+            <span class='fancy-text disabled'>#Messages</span>
+            <span class='fancy-text disabled'>#BookMarks</span>
+            <span class='fancy-text disabled'>#Lists</span>
+            <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
+            <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
           </div>
           <!-- When the Screen is small -->
           <div class="h-100 container d-flex flex-row justify-content-around d-lg-none">
@@ -62,7 +71,9 @@
               <span class='	fa fa-gears'></span>
             </div>
           </div>
-          <!---->
+          <div class='d-flex justify-content-end'>
+            <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
+          </div>
         </nav>
       <% end %>
 
@@ -89,8 +100,8 @@
         </section>
         <% if logged_in? %>
         <section class='right-side-panel col-12 col-lg-3 border-left d-flex flex-column text-center'>
-          <div class='container'>
-          <h4>Who to Follow</h4>
+          <div class='container my-5'>
+          <h4> People to Follow </h4>
           <% if User.count < 3 %>
             <span>There isn't many users in the database. Seed it with 'rails db:seed' in the console.</span>
           <% else %>
@@ -101,7 +112,7 @@
                   <% if user.avatar.attached? %>
                     <img class='' src='<%=(url_for(user.avatar))%>'>
                   <% else %>
-                    <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class=''>
+                    <img src=<%=Faker::Avatar.image %> alt="profile pic" class=''>
                   <% end %>
                 </div>
                 <div class="d-flex flex-column mx-2 my-auto text-left">
@@ -112,8 +123,12 @@
               <hr>
             <% end %>
           <% end %>
-          <br>
-          <%= %>
+            <div class='container text-left'>
+              <% 5.times do %>
+                <br>
+                <span class='user-text'><%= '#' + Faker::Artist.name %></span>
+              <% end %>
+            </div>
           </div>
         </section>
 
@@ -125,7 +140,7 @@
             <%= link_to '', users_path, class:'fa fa-search' %>
           </div>
           <div class='m-auto'>
-            <%= link_to '', feed_path, class:'fa fa-bell' %>
+            <%= link_to '', root_path, class:'fa fa-bell' %>
           </div>
           <div class='m-auto'>
             <span class='fa fa-envelope '></span>
