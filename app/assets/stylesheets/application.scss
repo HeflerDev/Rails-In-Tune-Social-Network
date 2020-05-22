@@ -1,12 +1,12 @@
 @import "bootstrap";
 
-$color-primary: #707AFF ;
-$color-secondary: #AE5AE8;
+$color-primary: #1F3140  ;
+$color-secondary: #242C47;
 $color-accent: #FF2B9D;
 $color-accent-border: #C4213D ;
-$color-text: whitesmoke;
+$color-text: #FFFFFF;
 $color-hover: #52FFC2;
-$color-background: rgb(180,160,255);
+$color-background: #6194ED;
 
 body{
   background-color: $color-background ;
@@ -37,6 +37,10 @@ body{
 .right-side-panel {
   background-color: whitesmoke ;
   top: 0;
+  bottom: 0;
+  height: 100vh;
+  position: sticky ;
+  overflow-y: auto;
 }
 
 .in-login {
@@ -257,10 +261,11 @@ i {
 }
 
 .container-background{
-  background-color: $color-secondary ;
+  background-color: $color-primary ;
   border: solid white 5px;
   border-radius: 10px;
   margin-top: 5%;
+  color: $color-text ;
   box-shadow: 0px 0px 5px 5px rgba(21,21,56,1);
   min-width: 310px !important;
 }
