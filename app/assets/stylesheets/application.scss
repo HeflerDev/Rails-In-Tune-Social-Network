@@ -34,6 +34,11 @@ body{
   }
 }
 
+.right-side-panel {
+  background-color: whitesmoke ;
+  top: 0;
+}
+
 .in-login {
   color: white;
   text-align: center;
@@ -170,6 +175,11 @@ i {
   font-family: 'Dancing Script', cursive;
 }
 
+.user-text{
+  color: grey;
+  font-size: 12px;
+}
+
 .in-index {
   font-size: 36px;
   margin: 5px 0;
@@ -191,6 +201,18 @@ i {
 .inside {
   color: rgb(21,21,21);
   font-size: 28px;
+}
+
+.circular-landscape-small {
+  display: inline-block;
+  position: relative;
+  width: 75px;
+  height: 75px;
+    img {
+      width: auto;
+      height: 100%;
+      border-radius: 50%;
+    }
 }
 
 .circular-landscape {
