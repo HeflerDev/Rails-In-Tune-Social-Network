@@ -15,6 +15,16 @@
   User.create fullname: name, username: username, biography: quote
 end
 
+100.times do
+  follower = User.find(rand(1..User.count))
+  followee = User.find(rand(1..User.count))
+  while follower == followee
+    follower = User.find(rand(1..User.count))
+    followee = User.find(rand(1..User.count))
+  end
+  Follow.create follower_id: follower.id, followee_id: followee.id
+end
+
 200.times do
   text = Faker::ChuckNorris.fact
   title = Faker::App.name
