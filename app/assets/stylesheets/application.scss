@@ -70,6 +70,7 @@ nav {
   position: sticky !important;
   z-index: 2000;
   top: 0;
+  overflow-y: auto;
   min-height: 50px;
   background-color: $color-secondary;
   color: $color-text;
@@ -78,9 +79,7 @@ nav {
   }
   .superior {
     background-color: $color-primary;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    padding: 1px;
   }
   .icon {
     font-size: 2.5rem;
@@ -185,10 +184,10 @@ i {
 }
 
 .nice-text{
-  font-weight: bolder;
+
   font-size:24px;
   color:whitesmoke;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Muli', sans-serif;
 }
 
 .user-text{
@@ -222,12 +221,13 @@ i {
 .circular-landscape-small {
   display: inline-block;
   position: relative;
-  width: 75px;
-  height: 75px;
+  width: 75px !important;
+  height: 75px !important;
+  overflow: hidden;
+  border-radius: 50%;
     img {
       width: auto;
       height: 100%;
-      border-radius: 50%;
     }
 }
 
@@ -295,6 +295,10 @@ i {
   max-width: 80%;
 }
 
+h4 {
+  font-family: 'Muli', sans-serif;
+}
+
 .credits {
   color:$color-accent-border;
   background-color: $color-hover ;
@@ -304,6 +308,7 @@ i {
 .author-name {
   color: $color-secondary;
   font-style: italic;
+  font-weight: bolder;
 }
 
 @media only screen and (min-width: 992px) {
