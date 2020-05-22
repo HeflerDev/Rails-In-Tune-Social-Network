@@ -1,15 +1,21 @@
 @import "bootstrap";
 
-$color-primary: #1F3140  ;
-$color-secondary: #242C47;
+$color-primary: #242C47 ;
+$color-primary-border: #1E263B;
+$color-secondary: #1F3140 ;
 $color-accent: #FF2B9D;
 $color-accent-border: #C4213D ;
 $color-text: #FFFFFF;
 $color-hover: #52FFC2;
-$color-background: #6194ED;
+$color-background-light: #6BA7D2;
+$color-background-dark: #6094B2 ;
 
 body{
-  background-color: $color-background ;
+  background-image: linear-gradient($color-background-light, $color-background-dark) ;
+}
+
+.border-p {
+  border: solid $color-primary-border 2px;
 }
 
 .warning {
@@ -65,10 +71,16 @@ nav {
   z-index: 2000;
   top: 0;
   min-height: 50px;
-  background-color: $color-primary;
+  background-color: $color-secondary;
   color: $color-text;
   .menu-bar{
     height: 70%;
+  }
+  .superior {
+    background-color: $color-primary;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .icon {
     font-size: 2.5rem;
