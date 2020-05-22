@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   resources :opinions
+
   get '/post', to: 'opinions#new'
   post '/post', to: 'opinions#create'
-  get '/feed', to: 'opinions#index'
+  root 'opinions#index'
+
 
   resources :users
-  root 'users#index'
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
   get '/friends', to: 'users#friends'
