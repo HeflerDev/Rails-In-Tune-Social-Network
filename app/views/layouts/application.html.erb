@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Merienda+One&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
 
@@ -16,14 +17,14 @@
     <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
-        <nav class='container d-flex flex-column justify-content-around col col-lg-3'>
+        <nav class='p-0 d-flex flex-column justify-content-around col col-lg-3'>
           <!-- When the screen is large -->
           <section class='superior'>
             <div class="d-none d-lg-flex">
-              <span class='logotype'>In#Tune</span>
+              <span class='logotype p-2'>In#Tune</span>
             </div>
             <div class='container'>
-              <div class='d-flex'>
+              <div class='d-flex my-2'>
                 <div class="circular-landscape-small">
                   <% if current_user.avatar.attached? %>
                     <img class='' src='<%=(url_for(current_user .avatar))%>'>
@@ -48,7 +49,7 @@
 
             </div>
           </section>
-          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
+          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between p-3">
             <span class='fancy-text'><%= link_to '#Feed', root_path, class:'link_style' %>
             </span>
             <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
@@ -58,6 +59,9 @@
             <span class='fancy-text disabled'>#Lists</span>
             <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
             <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
+            <div class='d-flex justify-content-end'>
+              <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
+            </div>
           </div>
           <!-- When the Screen is small -->
           <div class="h-100 container d-flex flex-row justify-content-around d-lg-none">
@@ -70,9 +74,6 @@
             <div class="icon col-4 m-auto text-right">
               <span class='	fa fa-gears'></span>
             </div>
-          </div>
-          <div class='d-flex justify-content-end'>
-            <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
           </div>
         </nav>
       <% end %>
@@ -106,7 +107,7 @@
             <span>There isn't many users in the database. Seed it with 'rails db:seed' in the console.</span>
           <% else %>
             <% 3.times do %>
-            <% user = get_random_user %>
+            <% user = suggest_friend %>
               <div class="d-flex text-left justify-content-start">
                 <div class="circular-landscape-small my-auto ">
                   <% if user.avatar.attached? %>
@@ -118,6 +119,16 @@
                 <div class="d-flex flex-column mx-2 my-auto text-left">
                   <span class='user-text'><%= user.fullname %></span>
                   <span class='user-text'><%= link_to '@'+user.username %></span>
+                  <% unless current_user.is_following?(user) %>
+                    <%= form_for Follow.new(followee_id:user.id, follower_id:current_user.id) do |f| %>
+                      <%= f.hidden_field :follower_id %>
+                      <%= f.hidden_field :followee_id %>
+                      <%= f.submit 'Follow User',class:'btn btn-primary' %>
+                    <% end %>
+                  <% else %>
+                  <%=link_to 'Unfollow', unfollow_path(user: user), class:'btn btn-danger', method: :delete %>
+                <% end %>
+
                 </div>
               </div>
               <hr>
