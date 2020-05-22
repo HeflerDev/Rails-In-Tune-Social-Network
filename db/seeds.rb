@@ -15,7 +15,7 @@
   User.create(fullname: name, username: username, biography: quote)
 end
 
-100.times do
+1000.times do
   follower = User.find(rand(1..User.count))
   followee = User.find(rand(1..User.count))
   while follower == followee
