@@ -46,7 +46,6 @@
                 <span><%= current_user.followees.count %></span>
                 <span>Following</span>
               </div>
-
             </div>
           </section>
           <div class="menu-bar d-none d-lg-flex flex-column justify-content-between p-3">
@@ -64,7 +63,7 @@
             </div>
           </div>
           <!-- When the Screen is small -->
-          <div class="h-100 container d-flex flex-row justify-content-around d-lg-none">
+          <div class="h-100 container d-flex flex-row justify-content-around position-sticky sticky-top d-lg-none">
             <div class="col-4 m-auto text-left">
               <span class='icon fa fa-bars'></span>
             </div>
@@ -106,9 +105,11 @@
           <% if User.count < 3 %>
             <span>There isn't many users in the database. Seed it with 'rails db:seed' in the console.</span>
           <% else %>
+          <div class='row'>
             <% 3.times do %>
             <% user = suggest_friend %>
-              <div class="d-flex text-left justify-content-start">
+
+              <div class="col-4 col-lg-12 d-flex text-left justify-content-start">
                 <div class="circular-landscape-small my-auto ">
                   <% if user.avatar.attached? %>
                     <img class='' src='<%=(url_for(user.avatar))%>'>
@@ -133,8 +134,11 @@
               </div>
               <hr>
             <% end %>
+            </div>
           <% end %>
+          <hr>
             <div class='container text-left'>
+              <span class='user-text'>Most Searched</span>
               <% 5.times do %>
                 <br>
                 <span class='user-text'><%= '#' + Faker::Artist.name %></span>
@@ -143,7 +147,7 @@
           </div>
         </section>
 
-        <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-fixed'>
+        <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-sticky'>
           <div class='m-auto'>
             <%= link_to '', current_user, class:'fa fa-home' %>
           </div>
@@ -159,6 +163,7 @@
         </footer>
         <% end %>
       </div>
+
     </div>
   </body>
 </html>
