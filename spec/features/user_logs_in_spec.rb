@@ -5,7 +5,7 @@ RSpec.feature 'User log in: ' do
   context 'When Loggin In' do
     it 'is valid with the right user' do
       log_in(user.username)
-      expect(page).to have_content('List of Users')
+      expect(page).to have_content('@'+user.username)
     end
 
     it 'is invalid with the wrong user' do

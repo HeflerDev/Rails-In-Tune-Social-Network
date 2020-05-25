@@ -7,8 +7,9 @@ RSpec.feature 'User association:' do
     it 'confirm that follow user works' do
       user_two = User.create(username:'Example2', fullname:'FullExample2', biography:'Lorem Ipsum2')
       log_in(user_one.username)
+      click_on('#Explore')
       expect(page).to have_content(user_two.username)
-      expect(page).to have_current_path(root_path)
+      expect(page).to have_current_path(users_path)
       click_on('Follow User')
       expect(page).to have_no_content(user_two.username)
       expect(user_one.followees.include?(user_two)).to be true
@@ -26,6 +27,7 @@ RSpec.feature 'User association:' do
       expect(user_two.followers.include?(user_one)).to be false
     end
   end
+
   def log_in(username)
     visit login_path
     fill_in 'session_username', with: username

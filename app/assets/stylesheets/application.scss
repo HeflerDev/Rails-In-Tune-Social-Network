@@ -42,12 +42,18 @@ body{
 
 .right-side-panel {
   background-color: whitesmoke ;
-  top: 0;
-  bottom: 0;
-  height: 100vh;
-  position: sticky ;
-  overflow-y: auto;
+  position: static ;
 }
+
+@media only screen and (min-width: 992px) {
+         .right-side-panel {
+           position: sticky;
+           height: 100vh;
+           overflow-y: auto;
+           top: 0;
+         }
+     }
+
 
 .in-login {
   color: white;
