@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Opinion, type: :model do
-  let(:user) { User.create(username:'Example',fullname:'FullExample', biography:'Lorem Ipsum') }
+  let(:user) { User.create(username: 'Example', fullname: 'FullExample', biography: 'Lorem Ipsum') }
 
   context 'on creation' do
     subject do
-      described_class.new(title:'Title',text:'Lorem Ipsum', author_id: user.id)
+      described_class.new(title: 'Title', text: 'Lorem Ipsum', author_id: user.id)
     end
     it 'is valid' do
       expect(subject).to be_valid

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'User association:' do
-  let(:user_one) { User.create(username:'Example',fullname:'FullExample', biography:'Lorem Ipsum') }
+  let(:user_one) { User.create(username: 'Example', fullname: 'FullExample', biography: 'Lorem Ipsum') }
 
   context 'When click to follow/unfollow' do
     it 'confirm that follow user works' do
-      user_two = User.create(username:'Example2', fullname:'FullExample2', biography:'Lorem Ipsum2')
+      user_two = User.create(username: 'Example2', fullname: 'FullExample2', biography: 'Lorem Ipsum2')
       log_in(user_one.username)
       click_on('#Explore')
       expect(page).to have_content(user_two.username)
@@ -17,7 +17,7 @@ RSpec.feature 'User association:' do
     end
 
     it 'confirm that unfollow user works' do
-      user_two = User.create(username:'Example2', fullname:'FullExample2', biography:'Lorem Ipsum2')
+      user_two = User.create(username: 'Example2', fullname: 'FullExample2', biography: 'Lorem Ipsum2')
       Follow.create(follower_id: user_one.id, followee_id: user_two.id)
       log_in(user_one.username)
       click_on('#Friends')

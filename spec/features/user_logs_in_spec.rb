@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'User log in: ' do
-  let(:user) { User.create(username:'Example',fullname:'FullExample', biography:'Lorem Ipsum') }
+  let(:user) { User.create(username: 'Example', fullname: 'FullExample', biography: 'Lorem Ipsum') }
   context 'When Loggin In' do
     it 'is valid with the right user' do
       log_in(user.username)
-      expect(page).to have_content('@'+user.username)
+      expect(page).to have_content('@' + user.username)
     end
 
     it 'is invalid with the wrong user' do

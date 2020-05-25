@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject do
-    described_class.new(username:'Example', fullname:'Full Example', biography:'Lorem ipsum Dolor sit amet nunquam')
+    described_class.new(username: 'Example', fullname: 'Full Example', biography: 'Lorem ipsum Dolor sit amet nunquam')
   end
   context 'on creation' do
     it 'is valid' do
