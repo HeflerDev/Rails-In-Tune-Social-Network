@@ -121,6 +121,16 @@ i {
   background-size: 100%;
 }
 
+@media only screen and (max-width: 720px) {
+      .background-photo {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(asset_path('happy-woman.jpg')) ;
+        background-repeat: no-repeat;
+        width:100%;
+        background-position: center;
+        background-size: 200%;
+      }
+     }
+
 .sticky-form {
     position: sticky;
     top:0;
@@ -290,7 +300,6 @@ i {
   margin-top: 5%;
   color: $color-text ;
   box-shadow: 0px 0px 5px 5px rgba(21,21,56,1);
-  min-width: 310px !important;
 }
 
 .partial-background {
