@@ -3,15 +3,16 @@
 $color-primary: #242C47 ;
 $color-primary-border: #1E263B;
 $color-secondary: #1F3140 ;
-$color-accent: #FF2B9D;
-$color-accent-border: #C4213D ;
+$color-accent: #0084b4;
+$color-accent-border: #0084b4 ;
 $color-text: #FFFFFF;
-$color-hover: #52FFC2;
-$color-background-light: #6BA7D2;
-$color-background-dark: #6094B2 ;
+$color-hover: #1dcaff;
+$color-background: #c0deed;
+$radius-button: 50px;
+
 
 body{
-  background-image: linear-gradient($color-background-light, $color-background-dark) ;
+  background-color: $color-background ;
 }
 
 .border-p {
@@ -126,7 +127,7 @@ i {
 .accent-button{
   background-color: $color-accent ;
   text-align: center;
-  border-radius: 50px;
+  border-radius: $radius-button ;
   color: whitesmoke;
   min-height: 32px;
   margin: auto;
@@ -137,7 +138,7 @@ i {
     background-color: $color-hover;
     transition: 0.2s;
     text-decoration: none;
-    color: $color-accent-border;
+    color: white;
     border: solid $color-hover 5px;
     transform: scale(1.2);
   }
