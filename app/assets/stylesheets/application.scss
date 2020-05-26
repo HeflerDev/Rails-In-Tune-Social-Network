@@ -1,15 +1,32 @@
 @import "bootstrap";
 
-$color-primary: #707AFF ;
-$color-secondary: #AE5AE8;
+$color-primary: #242C47 ;
+$color-primary-border: #1E263B;
+$color-secondary: #1F3140 ;
 $color-accent: #FF2B9D;
 $color-accent-border: #C4213D ;
-$color-text: whitesmoke;
+$color-text: #FFFFFF;
 $color-hover: #52FFC2;
-$color-background: rgb(180,160,255);
+$color-background-light: #6BA7D2;
+$color-background-dark: #6094B2 ;
 
 body{
-  background-color: $color-background ;
+  background-image: linear-gradient($color-background-light, $color-background-dark) ;
+}
+
+.border-p {
+  border: solid $color-primary-border 2px;
+}
+
+.warning {
+  color: red;
+  background-color: rgb(255,200,200) ;
+  border: solid red 2px;
+  border-radius: 10px;
+  padding: 5px;
+  width: 50%;
+  text-align: center;
+  min-width: 192px;
 }
 
 .logotype {
@@ -22,6 +39,21 @@ body{
     text-shadow: 0 0 5px rgba(255,255,255,1);
   }
 }
+
+.right-side-panel {
+  background-color: whitesmoke ;
+  position: static ;
+}
+
+@media only screen and (min-width: 992px) {
+         .right-side-panel {
+           position: sticky;
+           height: 100vh;
+           overflow-y: auto;
+           top: 0;
+         }
+     }
+
 
 .in-login {
   color: white;
@@ -44,11 +76,16 @@ nav {
   position: sticky !important;
   z-index: 2000;
   top: 0;
+  overflow-y: auto;
   min-height: 50px;
-  background-color: $color-primary;
+  background-color: $color-secondary;
   color: $color-text;
   .menu-bar{
     height: 70%;
+  }
+  .superior {
+    background-color: $color-primary;
+    padding: 1px;
   }
   .icon {
     font-size: 2.5rem;
@@ -153,10 +190,15 @@ i {
 }
 
 .nice-text{
-  font-weight: bolder;
+
   font-size:24px;
   color:whitesmoke;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Muli', sans-serif;
+}
+
+.user-text{
+  color: grey;
+  font-size: 12px;
 }
 
 .in-index {
@@ -180,6 +222,19 @@ i {
 .inside {
   color: rgb(21,21,21);
   font-size: 28px;
+}
+
+.circular-landscape-small {
+  display: inline-block;
+  position: relative;
+  width: 75px !important;
+  height: 75px !important;
+  overflow: hidden;
+  border-radius: 50%;
+    img {
+      width: auto;
+      height: 100%;
+    }
 }
 
 .circular-landscape {
@@ -224,10 +279,11 @@ i {
 }
 
 .container-background{
-  background-color: $color-secondary ;
+  background-color: $color-primary ;
   border: solid white 5px;
   border-radius: 10px;
   margin-top: 5%;
+  color: $color-text ;
   box-shadow: 0px 0px 5px 5px rgba(21,21,56,1);
   min-width: 310px !important;
 }
@@ -245,6 +301,10 @@ i {
   max-width: 80%;
 }
 
+h4 {
+  font-family: 'Muli', sans-serif;
+}
+
 .credits {
   color:$color-accent-border;
   background-color: $color-hover ;
@@ -254,6 +314,7 @@ i {
 .author-name {
   color: $color-secondary;
   font-style: italic;
+  font-weight: bolder;
 }
 
 @media only screen and (min-width: 992px) {

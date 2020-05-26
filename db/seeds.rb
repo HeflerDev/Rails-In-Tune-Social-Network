@@ -9,15 +9,25 @@
   User.create fullname: 'Henrique Figueiredo Hefler', username: 'Henrique'
 
 100.times do
-  username = Faker::FunnyName.name
-  name = Faker::Name.name
+  username = Faker::FunnyName.unique.name
+  name = Faker::Name.unique.name
   quote = Faker::Quote.matz
-  User.create fullname: name, username: username, biography: quote
+  User.create(fullname: name, username: username, biography: quote)
+end
+
+1000.times do
+  follower = User.find(rand(1..User.count))
+  followee = User.find(rand(1..User.count))
+  while follower == followee
+    follower = User.find(rand(1..User.count))
+    followee = User.find(rand(1..User.count))
+  end
+  Follow.create follower_id: follower.id, followee_id: followee.id
 end
 
 200.times do
   text = Faker::ChuckNorris.fact
   title = Faker::App.name
-  commenter_id = rand(1..90)
+  commenter_id = rand(1..User.count)
   Opinion.create(text:text,title:title, author_id:commenter_id)
 end

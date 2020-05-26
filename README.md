@@ -1,40 +1,67 @@
 <h1 style='text-align:center;'>In#Tune Social Newtwork</h1>
+<h3 style='text-align:center;'> Alpha Build 0.0.2 </h3>
 
-In#Tune Social network is a Capstone project that counts towards [Microverse](https://www.microverse.org/) graduation.
-It aims to have several functions listed below in order to practice what I learned.
+In#Tune Social network is a Capstone project that counts towards [Microverse](https://www.microverse.org/) graduation, it's demo is [here](https://guarded-beach-33158.herokuapp.com/login).
 
-## Specifications
+## Introduction
 
-The Project Requirements are Listed Below
+At first it will be developed as a twitter re-design, but later it will be worked to have
+extra features focused in matching people with commom interests, that's why it's called 'In#Tune'.
 
-1. The user logs in to the app, only by typing the username (a proper authenticated login is **not** a requirement).
+It mainly aims to have several functions listed below in order to practice with the Ruby on Rails framework.
 
-2. The user is presented with the homepage (see the *Homepage* screenshot above) that includes:
-    1. Left-side menu (includes only links to pages that are implemented).
-    2. *Tweets* tab in the centre (skip *Photos* and *Videos* for this MVP).
-    3. Right-side section with *Who to follow (*skip *Trending for* this MVP).
+## Implemented Features
+* V - 0.0.0
+  - Project UI Primary UI
+  - User and Opinion Models and Validations
+  - Users associations: Followers, Followees, Opinions.
+  - Opinion Associations: Opinion Author.
+  - Publish Opinions
+  - Filter Opinions to see from who you are following.
+  - Follow and Unfollow Buttons
+* V - 0.0.1
+  - RSPEC tests.
+  - Right-side bar.
+  - Query Fix (N+1 Problems)
+  - Public Alpha Deploy
 
-3. The *Tweets* section includes:
-    1. Simple form for creating a tweet.
-    2. List of all tweets (sorted by most recent) that display tweet text and author details.
+## Todo for next builds
 
-4. The *Who to follow* section includes:
-    1. List of profiles that are not followed by the logged-in user (ordered by most recently added).
+  -[] User Score (Score relative to another user, that'll be called relationship score)
+  -[] User Interests (User interests will add score in the relationship)
+  -[] User Dislikes (Will decrease score in the relationship)
+  -[] Tagging System
+  -[] Chat & Private Messaging
+  -[] Comment on Opinion
+  -[] Crop Profile Image
 
-5. When the user opens the profile page (see the *Userpage* screenshot above), they can see:
-    1. Left-side menu (includes only links to pages that are implemented).
-    2. Cover picture and *Tweets* tab in the centre (skip other tabs and *Tweet to user* form).
-    3. Right-side section with *Profile detailed info.*
+## Requirements
 
-6. The *Profile detailed info* section includes:
-    1. User photo.
-    2. Button to follow a user.
-    3. Stats: total number of tweets, number of followers and number of following users.
-    4. List of people who follow this user.
+  - Only a Stable connection and a browser is needed to access the app.
 
-7. At the end extend your MVP app with one simple feature of your choice.
-
-## Project Settings
+## Used Tools
 
 * Ruby 2.6.5
 * Rails 6.0.3
+* Postgre SQL
+* Puma as the app server
+* SCSS for stylesheets
+* [Transpile](https://github.com/rails/webpacker)
+* webpacker 4.0
+* [Turbolinks](https://github.com/turbolinks/turbolinks)
+* [Jbuilder](https://github.com/rails/jbuilder)
+* [Bootstrap](https://getbootstrap.com/)
+* [Faker](https://github.com/faker-ruby)
+* Image Processing 1.2
+* Bootsnap 1.4.2
+* Byebug
+* Shoulda-matchers
+* Listen 3.0.5
+* web-console 3.3.0
+* [Spring](https://github.com/rails/spring)
+* Rubocop
+* RSpec-rails
+* Capybara
+* Launchy
+* Selenium-webdriver
+* Webdrivers

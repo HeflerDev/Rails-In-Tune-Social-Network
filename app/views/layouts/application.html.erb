@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Merienda+One&family=Montserrat:wght@100&display=swap" rel="stylesheet">
   </head>
 
@@ -16,24 +17,15 @@
     <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
-        <nav class='container d-flex flex-column justify-content-around col col-lg-3'>
+        <nav class='p-0 d-flex flex-column justify-content-around col col-lg-3'>
           <!-- When the screen is large -->
-          <div class="d-none d-lg-flex">
-            <span class='logotype'>In#Tune</span>
-          </div>
-          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between">
-            <span class='fancy-text'><%= link_to '#Feed', feed_path, class:'link_style' %>
-            </span>
-            <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
-            <span class='fancy-text disabled'><%= link_to '#Friends', friends_path, class:'link_style' %></span>
-            <span class='fancy-text disabled'>#Messages</span>
-            <span class='fancy-text disabled'>#BookMarks</span>
-            <span class='fancy-text disabled'>#Lists</span>
-            <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
-            <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
+          <section class='superior'>
+            <div class="d-none d-lg-flex">
+              <span class='logotype p-2'>In#Tune</span>
+            </div>
             <div class='container'>
-              <div class='d-flex'>
-                <div class="circular-landscape">
+              <div class='d-flex my-2'>
+                <div class="circular-landscape-small">
                   <% if current_user.avatar.attached? %>
                     <img class='' src='<%=(url_for(current_user .avatar))%>'>
                   <% else %>
@@ -42,16 +34,36 @@
                 </div>
                 <div class="col-6 my-auto">
                   <span class='d-block'>@<%= current_user.username %></span>
-                  <span class='d-block'><%= current_user.fullname %></span>
                 </div>
               </div>
-              <div class='d-flex justify-content-end'>
-                <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
+            </div>
+            <div class="d-flex">
+              <div class='w-50 text-center d-flex flex-column border-p'>
+                <span><%= current_user.followers.count %></span>
+                <span>Followers</span>
               </div>
+              <div class="w-50 text-center d-flex flex-column border-p">
+                <span><%= current_user.followees.count %></span>
+                <span>Following</span>
+              </div>
+            </div>
+          </section>
+          <div class="menu-bar d-none d-lg-flex flex-column justify-content-between p-3">
+            <span class='fancy-text'><%= link_to '#Feed', root_path, class:'link_style' %>
+            </span>
+            <span class='fancy-text'><%= link_to '#Explore', users_path, class:'link_style'%></span>
+            <span class='fancy-text disabled'><%= link_to '#Friends', friends_path, class:'link_style' %></span>
+            <span class='fancy-text disabled'>#Messages</span>
+            <span class='fancy-text disabled'>#BookMarks</span>
+            <span class='fancy-text disabled'>#Lists</span>
+            <span class='fancy-text'><%= link_to '#Profile',current_user, class:'link_style'%></span>
+            <%= link_to 'New Opinion', post_path, class:'accent-button w-50' %>
+            <div class='d-flex justify-content-end'>
+              <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
             </div>
           </div>
           <!-- When the Screen is small -->
-          <div class="h-100 container d-flex flex-row justify-content-around d-lg-none">
+          <div class="h-100 container d-flex flex-row justify-content-around position-sticky sticky-top d-lg-none">
             <div class="col-4 m-auto text-left">
               <span class='icon fa fa-bars'></span>
             </div>
@@ -62,11 +74,16 @@
               <span class='	fa fa-gears'></span>
             </div>
           </div>
-          <!---->
         </nav>
       <% end %>
 
-        <session class="container-fluid m-0 p-0 col-12 col-lg-9">
+        <section
+        <% unless logged_in? %>
+          class="container-fluid m-0 p-0 col-12"
+        <% else %>
+          class="container-fluid m-0 p-0 col-12 col-lg-6"
+        <% end %>
+        >
           <!--
           <div class="inside-header">
             Hello World
@@ -80,9 +97,57 @@
             Hello World
           </div>
         -->
-        </session>
+        </section>
         <% if logged_in? %>
-        <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-fixed'>
+        <section class='right-side-panel col-12 col-lg-3 border-left d-flex flex-column text-center'>
+          <div class='container my-5'>
+          <h4> People to Follow </h4>
+          <% if User.count < 3 %>
+            <span>There isn't many users in the database. Seed it with 'rails db:seed' in the console.</span>
+          <% else %>
+          <div class='row'>
+            <% 3.times do %>
+            <% user = suggest_friend %>
+
+              <div class="col-4 col-lg-12 d-flex text-left justify-content-start">
+                <div class="circular-landscape-small my-auto ">
+                  <% if user.avatar.attached? %>
+                    <img class='' src='<%=(url_for(user.avatar))%>'>
+                  <% else %>
+                    <img src=<%=Faker::Avatar.image %> alt="profile pic" class=''>
+                  <% end %>
+                </div>
+                <div class="d-flex flex-column mx-2 my-auto text-left">
+                  <span class='user-text'><%= user.fullname %></span>
+                  <span class='user-text'><%= link_to '@'+user.username %></span>
+                  <% unless current_user.is_following?(user) %>
+                    <%= form_for Follow.new(followee_id:user.id, follower_id:current_user.id) do |f| %>
+                      <%= f.hidden_field :follower_id %>
+                      <%= f.hidden_field :followee_id %>
+                      <%= f.submit 'Follow User',class:'btn btn-primary' %>
+                    <% end %>
+                  <% else %>
+                  <%=link_to 'Unfollow', unfollow_path(user: user), class:'btn btn-danger', method: :delete %>
+                <% end %>
+
+                </div>
+              </div>
+              <hr>
+            <% end %>
+            </div>
+          <% end %>
+          <hr>
+            <div class='container text-left'>
+              <span class='user-text'>Most Searched</span>
+              <% 5.times do %>
+                <br>
+                <span class='user-text'><%= '#' + Faker::Artist.name %></span>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
+        <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-sticky'>
           <div class='m-auto'>
             <%= link_to '', current_user, class:'fa fa-home' %>
           </div>
@@ -90,7 +155,7 @@
             <%= link_to '', users_path, class:'fa fa-search' %>
           </div>
           <div class='m-auto'>
-            <%= link_to '', feed_path, class:'fa fa-bell' %>
+            <%= link_to '', root_path, class:'fa fa-bell' %>
           </div>
           <div class='m-auto'>
             <span class='fa fa-envelope '></span>
@@ -98,6 +163,7 @@
         </footer>
         <% end %>
       </div>
+
     </div>
   </body>
 </html>

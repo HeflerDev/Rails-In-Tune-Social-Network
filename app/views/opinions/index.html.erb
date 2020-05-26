@@ -1,7 +1,6 @@
-
 <div class='border sticky-form d-none d-lg-block'>
 <%= form_for(@opinion2, url:post_path) do |form| %>
-<div class='d-flex container m-auto p-3'>
+<div class='d-flex container m-auto p-1'>
   <div class="circular-landscape my-auto mx-3">
     <% if current_user.avatar.attached? %>
       <img class='' src='<%=(url_for(current_user.avatar))%>'>
@@ -30,10 +29,10 @@
           <% if opinion.author.avatar.attached? %>
             <img class='' src='<%=(url_for(opinion.author.avatar))%>'>
             <% else %>
-              <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="profile pic" class=''>
+              <img src=<%= Faker::Avatar.image %> alt="profile pic" class=''>
           <% end %>
         </div>
-        <div class='opinion-box ml-3 p-2'>
+        <div class='opinion-box w-75 ml-3 p-2'>
           <%= opinion.text %>
         </div>
       </div>

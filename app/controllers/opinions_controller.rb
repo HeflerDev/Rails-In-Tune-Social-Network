@@ -2,7 +2,7 @@ class OpinionsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @opinion = Opinion.order('created_at DESC')
+    @opinion = Opinion.includes(:author).order('created_at DESC')
     @opinion2 = Opinion.new
   end
 
@@ -15,7 +15,7 @@ class OpinionsController < ApplicationController
     @opinion.author_id = current_user.id
 
     if @opinion.save
-      redirect_to feed_path
+      redirect_to root_path
     else
       render 'new'
     end
