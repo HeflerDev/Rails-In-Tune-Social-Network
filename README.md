@@ -10,7 +10,13 @@ extra features focused in matching people with commom interests, that's why it's
 
 It mainly aims to have several functions listed below in order to practice with the Ruby on Rails framework.
 
-## Implemented Features
+## Requirements
+
+  - Only a Stable connection and a browser is needed to access the app.
+
+## Version Control
+
+### Implemented Features
 * V - 0.0.0
   - Project UI Primary UI
   - User and Opinion Models and Validations
@@ -19,25 +25,23 @@ It mainly aims to have several functions listed below in order to practice with 
   - Publish Opinions
   - Filter Opinions to see from who you are following.
   - Follow and Unfollow Buttons
-* V - 0.0.1
+* V - 0.1.0
   - RSPEC tests.
   - Right-side bar.
   - Query Fix (N+1 Problems)
   - Public Alpha Deploy
+* V - 0.2.0
+  
+  
+>### Todo for next builds
 
-## Todo for next builds
-
-  -[] User Score (Score relative to another user, that'll be called relationship score)
-  -[] User Interests (User interests will add score in the relationship)
-  -[] User Dislikes (Will decrease score in the relationship)
-  -[] Tagging System
-  -[] Chat & Private Messaging
-  -[] Comment on Opinion
-  -[] Crop Profile Image
-
-## Requirements
-
-  - Only a Stable connection and a browser is needed to access the app.
+  - [] User Score (Score relative to another user, that'll be called relationship score)
+  - [] User Interests (User interests will add score in the relationship)
+  - [] User Dislikes (Will decrease score in the relationship)
+  - [] Tagging System
+  - [] Chat & Private Messaging
+  - [] Comment on Opinion
+  - [] Crop Profile Image
 
 ## Used Tools
 
