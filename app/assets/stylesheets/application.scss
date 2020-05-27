@@ -3,15 +3,16 @@
 $color-primary: #242C47 ;
 $color-primary-border: #1E263B;
 $color-secondary: #1F3140 ;
-$color-accent: #FF2B9D;
-$color-accent-border: #C4213D ;
+$color-accent: #0084b4;
+$color-accent-border: #0084b4 ;
 $color-text: #FFFFFF;
-$color-hover: #52FFC2;
-$color-background-light: #6BA7D2;
-$color-background-dark: #6094B2 ;
+$color-hover: #1dcaff;
+$color-background: #6094B2;
+$radius-button: 50px;
+
 
 body{
-  background-image: linear-gradient($color-background-light, $color-background-dark) ;
+  background-color: $color-background ;
 }
 
 .border-p {
@@ -77,24 +78,28 @@ nav {
   z-index: 2000;
   top: 0;
   overflow-y: auto;
-  min-height: 50px;
+  min-height: 25px;
   background-color: $color-secondary;
   color: $color-text;
+  min-height: 150px;
   .menu-bar{
-    height: 70%;
+    height: 70%
   }
   .superior {
     background-color: $color-primary;
     padding: 1px;
   }
   .icon {
-    font-size: 2.5rem;
-    transition: 0.1s;
+    font-size: 2.5rem ;
+    transition: 0.1s ;
     &:hover{
-      transform: scale(2.0);
-      transition: 0.2s;
+      transition: 0.2s ;
     }
   }
+}
+
+.icon {
+  color: white;
 }
 
 .inside-footer, .inside-header {
@@ -116,6 +121,16 @@ i {
   background-size: 100%;
 }
 
+@media only screen and (max-width: 720px) {
+      .background-photo {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(asset_path('happy-woman.jpg')) ;
+        background-repeat: no-repeat;
+        width:100%;
+        background-position: center;
+        background-size: 200%;
+      }
+     }
+
 .sticky-form {
     position: sticky;
     top:0;
@@ -126,7 +141,7 @@ i {
 .accent-button{
   background-color: $color-accent ;
   text-align: center;
-  border-radius: 50px;
+  border-radius: $radius-button ;
   color: whitesmoke;
   min-height: 32px;
   margin: auto;
@@ -137,7 +152,7 @@ i {
     background-color: $color-hover;
     transition: 0.2s;
     text-decoration: none;
-    color: $color-accent-border;
+    color: white;
     border: solid $color-hover 5px;
     transform: scale(1.2);
   }
@@ -285,7 +300,6 @@ i {
   margin-top: 5%;
   color: $color-text ;
   box-shadow: 0px 0px 5px 5px rgba(21,21,56,1);
-  min-width: 310px !important;
 }
 
 .partial-background {

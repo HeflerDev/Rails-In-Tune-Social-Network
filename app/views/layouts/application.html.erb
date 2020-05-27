@@ -17,8 +17,7 @@
     <% if logged_in? %>
     <div class="container-fluid vh-100">
       <div class="row">
-        <nav class='p-0 d-flex flex-column justify-content-around col col-lg-3'>
-          <!-- When the screen is large -->
+        <nav class='p-0 d-none d-lg-flex flex-column justify-content-around col-lg-3'>
           <section class='superior'>
             <div class="d-none d-lg-flex">
               <span class='logotype p-2'>In#Tune</span>
@@ -62,17 +61,17 @@
               <%= link_to "Log out", logout_path,class:'link_style link_style_hover', method: :delete %>
             </div>
           </div>
-          <!-- When the Screen is small -->
-          <div class="h-100 container d-flex flex-row justify-content-around position-sticky sticky-top d-lg-none">
-            <div class="col-4 m-auto text-left">
-              <span class='icon fa fa-bars'></span>
-            </div>
-            <div class="icon col-4 m-auto text-center">
-              <span>Logo</span>
-            </div>
-            <div class="icon col-4 m-auto text-right">
-              <span class='	fa fa-gears'></span>
-            </div>
+        </nav>
+
+        <nav class="container col-12 d-flex flex-row justify-content-around  d-lg-none small">
+          <div class="col-4 m-auto text-left">
+            <span class='icon fa fa-bars disabled'></span>
+          </div>
+          <div class="icon col-4 m-auto text-center">
+            <span class='logotype'>In#Tune</span>
+          </div>
+          <div class="icon col-4 m-auto text-right">
+            <span class='	fa fa-gears disabled'></span>
           </div>
         </nav>
       <% end %>
@@ -149,16 +148,16 @@
 
         <footer class='container-flex col-12 d-lg-none d-flex flex-row justify-content-around position-sticky'>
           <div class='m-auto'>
-            <%= link_to '', current_user, class:'fa fa-home' %>
+            <%= link_to '', current_user, class:'fa fa-home icon' %>
           </div>
           <div class='m-auto'>
-            <%= link_to '', users_path, class:'fa fa-search' %>
+            <%= link_to '', users_path, class:'fa fa-search icon' %>
           </div>
           <div class='m-auto'>
-            <%= link_to '', root_path, class:'fa fa-bell' %>
+            <%= link_to '', root_path, class:'fa fa-bell icon' %>
           </div>
           <div class='m-auto'>
-            <span class='fa fa-envelope '></span>
+            <span class='fa fa-envelope disabled'></span>
           </div>
         </footer>
         <% end %>
